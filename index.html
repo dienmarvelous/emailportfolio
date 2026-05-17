@@ -1,0 +1,1557 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Email Copy Portfolio</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500&family=Space+Mono:wght@400;700&family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&family=Playfair+Display:ital,wght@0,500;1,400&family=Lato:wght@300;400;700&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --ink: #141210;
+    --ink-muted: #6b6560;
+    --ink-faint: #b0aa a3;
+    --paper: #faf8f4;
+    --paper-warm: #f3efe8;
+    --rule: #e2ddd6;
+    --accent: #c8502a;
+    --accent-light: #f5e8e2;
+    --font-display: 'DM Serif Display', Georgia, serif;
+    --font-body: 'DM Sans', system-ui, sans-serif;
+    --font-mono: 'Space Mono', monospace;
+    --max: 1080px;
+    --transition: 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--paper);
+    color: var(--ink);
+    font-family: var(--font-body);
+    font-size: 16px;
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  /* ── NAV ── */
+  nav {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    z-index: 100;
+    background: rgba(250, 248, 244, 0.92);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid var(--rule);
+    padding: 0 40px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 60px;
+  }
+
+  .nav-logo {
+    font-family: var(--font-display);
+    font-size: 17px;
+    color: var(--ink);
+    letter-spacing: 0.01em;
+  }
+
+  .nav-links {
+    display: flex;
+    gap: 32px;
+    list-style: none;
+  }
+
+  .nav-links a {
+    font-size: 13px;
+    color: var(--ink-muted);
+    text-decoration: none;
+    letter-spacing: 0.04em;
+    transition: color var(--transition);
+  }
+
+  .nav-links a:hover { color: var(--ink); }
+
+  /* ── HERO ── */
+  .hero {
+    padding: 140px 40px 80px;
+    max-width: var(--max);
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 60px;
+    align-items: end;
+  }
+
+  .hero-eyebrow {
+    font-size: 11px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--accent);
+    font-weight: 500;
+    margin-bottom: 18px;
+    font-family: var(--font-body);
+  }
+
+  .hero-title {
+    font-family: var(--font-display);
+    font-size: clamp(38px, 5vw, 58px);
+    line-height: 1.1;
+    color: var(--ink);
+    margin-bottom: 24px;
+  }
+
+  .hero-title em {
+    font-style: italic;
+    color: var(--accent);
+  }
+
+  .hero-body {
+    font-size: 16px;
+    color: var(--ink-muted);
+    line-height: 1.75;
+    max-width: 420px;
+  }
+
+  .hero-right {
+    padding-bottom: 8px;
+  }
+
+  .hero-stat-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1px;
+    background: var(--rule);
+    border: 1px solid var(--rule);
+  }
+
+  .hero-stat {
+    background: var(--paper);
+    padding: 24px 28px;
+  }
+
+  .hero-stat-num {
+    font-family: var(--font-display);
+    font-size: 36px;
+    color: var(--ink);
+    line-height: 1;
+    margin-bottom: 4px;
+  }
+
+  .hero-stat-label {
+    font-size: 12px;
+    color: var(--ink-muted);
+    letter-spacing: 0.04em;
+    line-height: 1.4;
+  }
+
+  /* ── SECTION DIVIDER ── */
+  .section-rule {
+    max-width: var(--max);
+    margin: 0 auto;
+    padding: 0 40px;
+    border: none;
+    border-top: 1px solid var(--rule);
+  }
+
+  /* ── CAMPAIGN OVERVIEW ── */
+  .campaigns-intro {
+    max-width: var(--max);
+    margin: 0 auto;
+    padding: 64px 40px 48px;
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    gap: 40px;
+  }
+
+  .campaigns-intro h2 {
+    font-family: var(--font-display);
+    font-size: 32px;
+    color: var(--ink);
+  }
+
+  .campaigns-intro p {
+    font-size: 14px;
+    color: var(--ink-muted);
+    max-width: 400px;
+    line-height: 1.7;
+  }
+
+  /* ── CAMPAIGN CARDS ── */
+  .campaign-cards {
+    max-width: var(--max);
+    margin: 0 auto;
+    padding: 0 40px 80px;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+  }
+
+  .campaign-card {
+    border: 1px solid var(--rule);
+    background: white;
+    cursor: pointer;
+    transition: border-color var(--transition), transform var(--transition);
+    position: relative;
+    overflow: hidden;
+  }
+
+  .campaign-card:hover { border-color: var(--ink); transform: translateY(-2px); }
+  .campaign-card.active { border-color: var(--ink); }
+
+  .campaign-card.active::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 3px;
+    background: var(--accent);
+  }
+
+  .card-header {
+    padding: 24px 24px 18px;
+    border-bottom: 1px solid var(--rule);
+  }
+
+  .card-tag {
+    font-size: 10px;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--accent);
+    font-weight: 500;
+    margin-bottom: 8px;
+    font-family: var(--font-body);
+  }
+
+  .card-name {
+    font-family: var(--font-display);
+    font-size: 20px;
+    color: var(--ink);
+    margin-bottom: 6px;
+  }
+
+  .card-type {
+    font-size: 12px;
+    color: var(--ink-muted);
+    letter-spacing: 0.03em;
+  }
+
+  .card-body {
+    padding: 18px 24px 22px;
+  }
+
+  .card-desc {
+    font-size: 13px;
+    color: var(--ink-muted);
+    line-height: 1.65;
+    margin-bottom: 16px;
+  }
+
+  .card-pills {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+  }
+
+  .pill {
+    font-size: 11px;
+    padding: 3px 10px;
+    border: 1px solid var(--rule);
+    border-radius: 2px;
+    color: var(--ink-muted);
+    letter-spacing: 0.03em;
+    background: var(--paper);
+  }
+
+  /* ── EMAIL VIEWER ── */
+  .viewer-section {
+    background: var(--paper-warm);
+    border-top: 1px solid var(--rule);
+    border-bottom: 1px solid var(--rule);
+    padding: 48px 40px 64px;
+  }
+
+  .viewer-inner {
+    max-width: var(--max);
+    margin: 0 auto;
+  }
+
+  .viewer-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 28px;
+    flex-wrap: wrap;
+    gap: 16px;
+  }
+
+  .viewer-campaign-name {
+    font-family: var(--font-display);
+    font-size: 22px;
+    color: var(--ink);
+  }
+
+  .email-tabs {
+    display: flex;
+    gap: 6px;
+    flex-wrap: wrap;
+  }
+
+  .email-tab {
+    padding: 8px 16px;
+    border: 1px solid var(--rule);
+    background: white;
+    color: var(--ink-muted);
+    font-size: 12px;
+    font-family: var(--font-body);
+    cursor: pointer;
+    transition: all var(--transition);
+    letter-spacing: 0.03em;
+    border-radius: 2px;
+  }
+
+  .email-tab:hover { border-color: var(--ink-muted); color: var(--ink); }
+  .email-tab.active { background: var(--ink); color: white; border-color: var(--ink); }
+
+  .email-shell {
+    border: 1px solid #d4cfc8;
+    border-radius: 4px;
+    overflow: hidden;
+    box-shadow: 0 4px 24px rgba(0,0,0,0.07);
+  }
+
+  .email-chrome {
+    background: #f0ece6;
+    border-bottom: 1px solid #d4cfc8;
+    padding: 10px 16px;
+    display: flex;
+    gap: 6px;
+    align-items: center;
+  }
+
+  .chrome-dot {
+    width: 10px; height: 10px;
+    border-radius: 50%;
+  }
+
+  .chrome-dot:nth-child(1) { background: #ff5f57; }
+  .chrome-dot:nth-child(2) { background: #febc2e; }
+  .chrome-dot:nth-child(3) { background: #28c840; }
+
+  .email-meta-bar {
+    background: #f7f4ef;
+    border-bottom: 1px solid #e2ddd6;
+    padding: 14px 24px;
+    display: grid;
+    grid-template-columns: 52px 1fr;
+    gap: 6px 0;
+    font-size: 13px;
+  }
+
+  .meta-label { color: #8a8480; font-weight: 500; }
+  .meta-val { color: #4a4540; }
+  .subject-val { color: #141210; font-weight: 500; }
+
+  .email-view { display: none; }
+  .email-view.visible { display: block; }
+
+  /* ── CRYPTO EMAIL ── */
+  .crypto-email {
+    font-family: 'Space Mono', monospace;
+    background: #080d1c;
+    color: #dde6f8;
+  }
+
+  .crypto-header {
+    padding: 24px 32px;
+    border-bottom: 1px solid #162036;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+
+  .crypto-logo {
+    font-family: 'Space Mono', monospace;
+    font-size: 12px;
+    font-weight: 700;
+    color: #5ef4be;
+    letter-spacing: 0.12em;
+  }
+
+  .crypto-badge {
+    font-size: 9px;
+    padding: 2px 7px;
+    border: 1px solid rgba(94,244,190,0.3);
+    background: rgba(94,244,190,0.08);
+    color: #5ef4be;
+    letter-spacing: 0.1em;
+    border-radius: 2px;
+  }
+
+  .crypto-content { padding: 32px; }
+
+  .crypto-lesson-num {
+    font-size: 10px;
+    letter-spacing: 0.14em;
+    color: #5ef4be;
+    margin-bottom: 12px;
+  }
+
+  .crypto-h1 {
+    font-family: 'Space Mono', monospace;
+    font-size: 21px;
+    font-weight: 700;
+    color: #fff;
+    line-height: 1.3;
+    margin-bottom: 22px;
+  }
+
+  .crypto-body {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 14px;
+    color: #8fa8cc;
+    line-height: 1.8;
+    margin-bottom: 18px;
+  }
+
+  .crypto-callout {
+    background: rgba(94,244,190,0.05);
+    border-left: 3px solid #5ef4be;
+    padding: 16px 20px;
+    border-radius: 0 4px 4px 0;
+    margin: 22px 0;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 13px;
+    color: #b8cce4;
+    line-height: 1.7;
+  }
+
+  .crypto-callout strong { color: #5ef4be; font-weight: 500; }
+
+  .crypto-concepts {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+    margin: 22px 0;
+  }
+
+  .crypto-concept {
+    background: rgba(255,255,255,0.025);
+    border: 1px solid #162036;
+    border-radius: 4px;
+    padding: 14px 16px;
+  }
+
+  .crypto-concept-title {
+    font-size: 10px;
+    color: #5ef4be;
+    letter-spacing: 0.1em;
+    margin-bottom: 5px;
+  }
+
+  .crypto-concept-body {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 12px;
+    color: #6080a0;
+    line-height: 1.65;
+  }
+
+  .crypto-cta { margin-top: 30px; }
+
+  .crypto-btn {
+    display: inline-block;
+    background: #5ef4be;
+    color: #080d1c;
+    font-family: 'Space Mono', monospace;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    padding: 13px 28px;
+    border-radius: 3px;
+    border: none;
+    cursor: pointer;
+    text-decoration: none;
+  }
+
+  .crypto-footer {
+    padding: 20px 32px;
+    border-top: 1px solid #162036;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 11px;
+    color: #2a3f5a;
+    line-height: 1.7;
+  }
+
+  /* ── FASHION EMAIL ── */
+  .fashion-email {
+    font-family: 'Cormorant Garamond', serif;
+    background: #faf8f5;
+    color: #1a1714;
+  }
+
+  .fashion-top {
+    padding: 34px 44px 0;
+    text-align: center;
+  }
+
+  .fashion-logo {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 21px;
+    font-weight: 600;
+    letter-spacing: 0.28em;
+    text-transform: uppercase;
+    color: #1a1714;
+  }
+
+  .fashion-tagline {
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    font-size: 13px;
+    color: #8a7d6b;
+    letter-spacing: 0.08em;
+    margin-top: 5px;
+  }
+
+  .fashion-rule { width: 36px; height: 1px; background: #c5b89a; margin: 18px auto; }
+
+  .fashion-hero-text {
+    padding: 0 44px 28px;
+    text-align: center;
+  }
+
+  .fashion-eyebrow {
+    font-family: 'Lato', sans-serif;
+    font-size: 10px;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: #8a7d6b;
+    margin-bottom: 14px;
+  }
+
+  .fashion-h1 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 30px;
+    font-weight: 600;
+    line-height: 1.2;
+    color: #1a1714;
+    margin-bottom: 18px;
+  }
+
+  .fashion-body {
+    font-family: 'Lato', sans-serif;
+    font-size: 14px;
+    color: #5a5248;
+    line-height: 1.8;
+    text-align: left;
+    max-width: 500px;
+    margin: 0 auto 16px;
+  }
+
+  .fashion-pullquote {
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    font-size: 19px;
+    color: #8a7d6b;
+    text-align: center;
+    padding: 24px 44px;
+    border-top: 1px solid #e8e0d4;
+    border-bottom: 1px solid #e8e0d4;
+    line-height: 1.55;
+    margin-bottom: 28px;
+  }
+
+  .fashion-thirds {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    border-top: 1px solid #e8e0d4;
+    border-bottom: 1px solid #e8e0d4;
+    margin-bottom: 28px;
+  }
+
+  .fashion-third {
+    padding: 22px 24px;
+    text-align: center;
+    border-right: 1px solid #e8e0d4;
+  }
+
+  .fashion-third:last-child { border-right: none; }
+
+  .fashion-third-num {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 34px;
+    font-weight: 600;
+    color: #c5b89a;
+    line-height: 1;
+    margin-bottom: 5px;
+  }
+
+  .fashion-third-label {
+    font-family: 'Lato', sans-serif;
+    font-size: 10px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: #8a7d6b;
+    line-height: 1.5;
+  }
+
+  .fashion-cta {
+    text-align: center;
+    padding: 0 44px 32px;
+  }
+
+  .fashion-btn {
+    display: inline-block;
+    border: 1px solid #1a1714;
+    color: #1a1714;
+    font-family: 'Lato', sans-serif;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    padding: 13px 36px;
+    text-decoration: none;
+    cursor: pointer;
+    background: transparent;
+  }
+
+  .fashion-secondary {
+    display: block;
+    margin-top: 12px;
+    font-family: 'Lato', sans-serif;
+    font-size: 12px;
+    color: #8a7d6b;
+    text-decoration: underline;
+    cursor: pointer;
+    letter-spacing: 0.04em;
+    background: none;
+    border: none;
+    padding: 0;
+  }
+
+  .fashion-footer {
+    padding: 18px 44px;
+    border-top: 1px solid #e8e0d4;
+    text-align: center;
+    font-family: 'Lato', sans-serif;
+    font-size: 11px;
+    color: #8a7d6b;
+    line-height: 1.7;
+    letter-spacing: 0.03em;
+  }
+
+  .fashion-product-list { padding: 0 44px 28px; }
+
+  .fashion-product {
+    padding: 20px 0;
+    border-bottom: 1px solid #f0e8dc;
+  }
+
+  .fashion-product:last-child { border-bottom: none; }
+
+  .fashion-product-label {
+    font-family: 'Lato', sans-serif;
+    font-size: 10px;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: #8a7d6b;
+    margin-bottom: 5px;
+  }
+
+  .fashion-product-name {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 19px;
+    font-weight: 600;
+    color: #1a1714;
+    margin-bottom: 6px;
+  }
+
+  .fashion-product-desc {
+    font-family: 'Lato', sans-serif;
+    font-size: 13px;
+    color: #5a5248;
+    line-height: 1.7;
+    margin-bottom: 6px;
+  }
+
+  .fashion-product-price {
+    font-family: 'Lato', sans-serif;
+    font-size: 12px;
+    color: #8a7d6b;
+    letter-spacing: 0.04em;
+  }
+
+  /* ── CAKE EMAIL ── */
+  .cake-email {
+    font-family: 'Lato', sans-serif;
+    background: #fffdf9;
+    color: #2d1f0f;
+  }
+
+  .cake-header {
+    background: #2d1f0f;
+    padding: 22px 36px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  .cake-logo {
+    font-family: 'Playfair Display', serif;
+    font-size: 19px;
+    font-weight: 500;
+    color: #f5e6c8;
+  }
+
+  .cake-logo span { font-style: italic; color: #e8a050; }
+
+  .cake-header-tag {
+    font-size: 9px;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: #a08060;
+    border: 1px solid #4a3520;
+    padding: 4px 10px;
+    border-radius: 2px;
+  }
+
+  .cake-hero {
+    background: #f5e6c8;
+    padding: 34px 36px 26px;
+    text-align: center;
+    border-bottom: 3px solid #e8a050;
+  }
+
+  .cake-hero-eyebrow {
+    font-size: 10px;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: #a06030;
+    margin-bottom: 10px;
+    font-weight: 700;
+  }
+
+  .cake-h1 {
+    font-family: 'Playfair Display', serif;
+    font-size: 25px;
+    font-weight: 500;
+    color: #2d1f0f;
+    line-height: 1.3;
+    margin-bottom: 12px;
+  }
+
+  .cake-h1 em { font-style: italic; color: #a06030; }
+
+  .cake-hero-sub {
+    font-size: 14px;
+    color: #6b4a28;
+    line-height: 1.7;
+    max-width: 440px;
+    margin: 0 auto;
+  }
+
+  .cake-content { padding: 28px 36px; }
+
+  .cake-body {
+    font-size: 14px;
+    color: #4a3520;
+    line-height: 1.8;
+    margin-bottom: 18px;
+  }
+
+  .cake-divider {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin: 20px 0;
+    color: #d4a878;
+    font-size: 16px;
+  }
+
+  .cake-divider::before, .cake-divider::after {
+    content: '';
+    flex: 1;
+    height: 1px;
+    background: #e8d4b4;
+  }
+
+  .cake-highlight-box {
+    background: #fff8ee;
+    border: 1px solid #e8c88a;
+    border-radius: 4px;
+    padding: 18px 22px;
+    margin: 18px 0;
+  }
+
+  .cake-highlight-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 15px;
+    font-weight: 500;
+    color: #2d1f0f;
+    margin-bottom: 7px;
+  }
+
+  .cake-highlight-body {
+    font-size: 13px;
+    color: #6b4a28;
+    line-height: 1.7;
+  }
+
+  .cake-product {
+    padding: 18px 0;
+    border-bottom: 1px solid #e8d4b4;
+  }
+
+  .cake-product:last-child { border-bottom: none; }
+
+  .cake-product-name {
+    font-family: 'Playfair Display', serif;
+    font-size: 17px;
+    font-weight: 500;
+    color: #2d1f0f;
+    margin-bottom: 5px;
+  }
+
+  .cake-product-desc {
+    font-size: 13px;
+    color: #4a3520;
+    line-height: 1.7;
+  }
+
+  .cake-offer-box {
+    background: #2d1f0f;
+    border-radius: 4px;
+    padding: 24px;
+    text-align: center;
+    margin: 22px 0;
+  }
+
+  .cake-offer-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 20px;
+    color: #f5e6c8;
+    margin-bottom: 6px;
+  }
+
+  .cake-offer-title em { font-style: italic; color: #e8a050; }
+
+  .cake-offer-code {
+    font-family: 'Space Mono', monospace;
+    font-size: 22px;
+    font-weight: 700;
+    color: #e8a050;
+    letter-spacing: 0.14em;
+    margin: 12px 0;
+  }
+
+  .cake-offer-sub {
+    font-size: 12px;
+    color: #a08060;
+    margin-bottom: 16px;
+  }
+
+  .cake-btn {
+    display: inline-block;
+    background: #e8a050;
+    color: #2d1f0f;
+    font-family: 'Lato', sans-serif;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    padding: 13px 28px;
+    border-radius: 3px;
+    border: none;
+    cursor: pointer;
+    text-decoration: none;
+  }
+
+  .cake-footer {
+    padding: 18px 36px;
+    border-top: 1px solid #e8d4b4;
+    text-align: center;
+    font-size: 11px;
+    color: #a08060;
+    line-height: 1.7;
+  }
+
+  /* ── ABOUT SECTION ── */
+  .about-section {
+    max-width: var(--max);
+    margin: 0 auto;
+    padding: 72px 40px 80px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 80px;
+    align-items: start;
+  }
+
+  .about-left h2 {
+    font-family: var(--font-display);
+    font-size: 34px;
+    line-height: 1.2;
+    color: var(--ink);
+    margin-bottom: 20px;
+  }
+
+  .about-left h2 em { font-style: italic; color: var(--accent); }
+
+  .about-left p {
+    font-size: 15px;
+    color: var(--ink-muted);
+    line-height: 1.8;
+    margin-bottom: 14px;
+  }
+
+  .about-right {
+    padding-top: 4px;
+  }
+
+  .service-item {
+    padding: 20px 0;
+    border-bottom: 1px solid var(--rule);
+    display: grid;
+    grid-template-columns: 120px 1fr;
+    gap: 20px;
+    align-items: start;
+  }
+
+  .service-item:first-child { border-top: 1px solid var(--rule); }
+
+  .service-label {
+    font-size: 11px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--accent);
+    font-weight: 500;
+    padding-top: 2px;
+  }
+
+  .service-name {
+    font-size: 15px;
+    color: var(--ink);
+    font-weight: 500;
+    margin-bottom: 4px;
+  }
+
+  .service-desc {
+    font-size: 13px;
+    color: var(--ink-muted);
+    line-height: 1.6;
+  }
+
+  /* ── CTA STRIP ── */
+  .cta-strip {
+    background: var(--ink);
+    padding: 56px 40px;
+    text-align: center;
+  }
+
+  .cta-strip h2 {
+    font-family: var(--font-display);
+    font-size: 36px;
+    color: white;
+    margin-bottom: 12px;
+  }
+
+  .cta-strip h2 em { font-style: italic; color: #f5b89a; }
+
+  .cta-strip p {
+    font-size: 15px;
+    color: #8a8076;
+    margin-bottom: 28px;
+  }
+
+  .cta-btn {
+    display: inline-block;
+    background: var(--accent);
+    color: white;
+    font-family: var(--font-body);
+    font-size: 13px;
+    font-weight: 500;
+    letter-spacing: 0.06em;
+    padding: 14px 36px;
+    text-decoration: none;
+    border-radius: 2px;
+    margin-right: 12px;
+    border: none;
+    cursor: pointer;
+  }
+
+  .cta-btn-outline {
+    display: inline-block;
+    border: 1px solid #3a3530;
+    color: #8a8076;
+    font-family: var(--font-body);
+    font-size: 13px;
+    padding: 14px 36px;
+    text-decoration: none;
+    border-radius: 2px;
+    background: none;
+    cursor: pointer;
+  }
+
+  /* ── FOOTER ── */
+  footer {
+    background: #0e0c0a;
+    padding: 32px 40px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 16px;
+  }
+
+  footer .f-logo {
+    font-family: var(--font-display);
+    font-size: 15px;
+    color: #5a5550;
+  }
+
+  footer .f-copy {
+    font-size: 12px;
+    color: #3a3530;
+    letter-spacing: 0.03em;
+  }
+
+  /* ── ANIMATIONS ── */
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(20px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+
+  .hero-eyebrow { animation: fadeUp 0.6s ease both; }
+  .hero-title   { animation: fadeUp 0.6s 0.1s ease both; }
+  .hero-body    { animation: fadeUp 0.6s 0.2s ease both; }
+  .hero-right   { animation: fadeUp 0.6s 0.25s ease both; }
+
+  /* ── RESPONSIVE ── */
+  @media (max-width: 900px) {
+    nav { padding: 0 24px; }
+    .nav-links { gap: 20px; }
+    .hero { grid-template-columns: 1fr; padding: 120px 24px 60px; gap: 40px; }
+    .hero-body { max-width: 100%; }
+    .campaigns-intro { flex-direction: column; gap: 12px; padding: 48px 24px 32px; }
+    .campaign-cards { grid-template-columns: 1fr; padding: 0 24px 60px; }
+    .viewer-section { padding: 40px 24px 52px; }
+    .about-section { grid-template-columns: 1fr; gap: 48px; padding: 56px 24px 64px; }
+    .cta-strip { padding: 48px 24px; }
+    footer { padding: 28px 24px; }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-logo">Email Portfolio</div>
+  <ul class="nav-links">
+    <li><a href="#campaigns" onclick="event.preventDefault(); document.getElementById('campaigns').scrollIntoView({behavior:'smooth'});">Work</a></li>
+    <li><a href="#" onclick="event.preventDefault();">About</a></li>
+    <li><a href="#" onclick="event.preventDefault();">Contact</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-left">
+    <div class="hero-eyebrow">Email Copywriting Portfolio</div>
+    <h1 class="hero-title">Words that<br>move people<br><em>to act.</em></h1>
+    <p class="hero-body">Email sequences built around brand voice, customer psychology, and revenue outcomes. Three campaigns — three industries — one throughline: copy that earns its place in the inbox.</p>
+  </div>
+  <div class="hero-right">
+    <div class="hero-stat-grid">
+      <div class="hero-stat">
+        <div class="hero-stat-num">3</div>
+        <div class="hero-stat-label">Campaign types featured</div>
+      </div>
+      <div class="hero-stat">
+        <div class="hero-stat-num">9</div>
+        <div class="hero-stat-label">Full emails, written to spec</div>
+      </div>
+      <div class="hero-stat">
+        <div class="hero-stat-num">3</div>
+        <div class="hero-stat-label">Distinct brand voices</div>
+      </div>
+      <div class="hero-stat">
+        <div class="hero-stat-num">∞</div>
+        <div class="hero-stat-label">Industries I can write for</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<hr class="section-rule">
+
+<!-- CAMPAIGN SELECTOR -->
+<section id="campaigns">
+  <div class="campaigns-intro">
+    <h2>Featured campaigns</h2>
+    <p>Three briefs. Three tones. Each sequence built to move subscribers from cold to converted — without sounding like everyone else.</p>
+  </div>
+
+  <div class="campaign-cards">
+    <div class="campaign-card active" onclick="selectCampaign('crypto', this)">
+      <div class="card-header">
+        <div class="card-tag">Tutorial Series · 3 Emails</div>
+        <div class="card-name">ChainClass Academy</div>
+        <div class="card-type">Crypto Education Platform</div>
+      </div>
+      <div class="card-body">
+        <p class="card-desc">Breaking down blockchain, wallets, and DeFi into digestible lessons — without dumbing it down. Technical credibility meets accessible prose.</p>
+        <div class="card-pills">
+          <span class="pill">Education</span>
+          <span class="pill">Fintech</span>
+          <span class="pill">Onboarding</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="campaign-card" onclick="selectCampaign('fashion', this)">
+      <div class="card-header">
+        <div class="card-tag">Welcome Sequence · 3 Emails</div>
+        <div class="card-name">Maison Velours</div>
+        <div class="card-type">Quiet Luxury Fashion Brand</div>
+      </div>
+      <div class="card-body">
+        <p class="card-desc">Introducing a refined brand world, sharing a founder story, and converting new subscribers — all without a single discount or urgency tactic.</p>
+        <div class="card-pills">
+          <span class="pill">Fashion</span>
+          <span class="pill">Luxury</span>
+          <span class="pill">Brand Story</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="campaign-card" onclick="selectCampaign('cake', this)">
+      <div class="card-header">
+        <div class="card-tag">Nurture Sequence · 3 Emails</div>
+        <div class="card-name">Petit Four Bakehouse</div>
+        <div class="card-type">Artisan Cake & Pastry Brand</div>
+      </div>
+      <div class="card-body">
+        <p class="card-desc">From origin story to first-order incentive — a warm, sensory-rich sequence that makes subscribers taste the pastry before they even order it.</p>
+        <div class="card-pills">
+          <span class="pill">Food & Beverage</span>
+          <span class="pill">E-commerce</span>
+          <span class="pill">Storytelling</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- EMAIL VIEWER -->
+<div class="viewer-section">
+  <div class="viewer-inner">
+    <div class="viewer-header">
+      <div class="viewer-campaign-name" id="viewer-title">ChainClass Academy — Tutorial Series</div>
+      <div class="email-tabs" id="email-tabs">
+        <button class="email-tab active" onclick="showEmail(0)">Lesson 1 — Blockchain</button>
+        <button class="email-tab" onclick="showEmail(1)">Lesson 2 — Wallets & Keys</button>
+        <button class="email-tab" onclick="showEmail(2)">Lesson 3 — DeFi</button>
+      </div>
+    </div>
+
+    <div class="email-shell">
+      <div class="email-chrome">
+        <div class="chrome-dot"></div>
+        <div class="chrome-dot"></div>
+        <div class="chrome-dot"></div>
+      </div>
+
+      <!-- CRYPTO EMAILS -->
+      <div id="emails-crypto">
+
+        <div class="email-view visible" id="crypto-0">
+          <div class="email-meta-bar">
+            <span class="meta-label">From</span><span class="meta-val">ChainClass Academy &lt;learn@chainclass.io&gt;</span>
+            <span class="meta-label">Subject</span><span class="subject-val">Lesson 1: What actually is a blockchain? (it's simpler than you think)</span>
+          </div>
+          <div class="crypto-email">
+            <div class="crypto-header"><span class="crypto-logo">CHAINCLASS</span><span class="crypto-badge">ACADEMY</span></div>
+            <div class="crypto-content">
+              <div class="crypto-lesson-num">LESSON 01 / 03 &nbsp;·&nbsp; FUNDAMENTALS TRACK</div>
+              <div class="crypto-h1">What actually is a blockchain?</div>
+              <div class="crypto-body">Welcome to your first lesson. Before we talk about Bitcoin prices or NFTs or yield farming — we need to understand the technology underneath it all. And the good news? It's not nearly as complicated as crypto Twitter makes it sound.</div>
+              <div class="crypto-callout"><strong>The one-sentence version:</strong> A blockchain is a shared record book that thousands of computers around the world all hold a copy of — and none of them can secretly edit it without everyone else noticing.</div>
+              <div class="crypto-body">Think of your bank. Right now, your balance exists as a number in your bank's private database. You trust them not to change it. With a blockchain, there is no central database. Instead, every transaction is bundled into a "block," stamped with a timestamp and a unique fingerprint, then chained to the block before it.</div>
+              <div class="crypto-body">Change one block? Every block after it immediately breaks. The network catches it instantly. That's what makes it tamper-resistant — not magic, just math.</div>
+              <div class="crypto-concepts">
+                <div class="crypto-concept"><div class="crypto-concept-title">BLOCK</div><div class="crypto-concept-body">A container of recent transactions, a timestamp, and the fingerprint of the previous block.</div></div>
+                <div class="crypto-concept"><div class="crypto-concept-title">CHAIN</div><div class="crypto-concept-body">Each block references the one before it, creating an unbroken, verifiable history.</div></div>
+                <div class="crypto-concept"><div class="crypto-concept-title">NODE</div><div class="crypto-concept-body">A computer that holds a full copy of the blockchain and validates new transactions.</div></div>
+                <div class="crypto-concept"><div class="crypto-concept-title">CONSENSUS</div><div class="crypto-concept-body">The rule system nodes use to agree on which transactions are valid.</div></div>
+              </div>
+              <div class="crypto-body">You don't need to memorize any of this yet. Just hold onto the core idea: a blockchain replaces "trust in one institution" with "trust in transparent, distributed math."</div>
+              <div class="crypto-body">Next lesson, we'll get hands-on — we're building your first wallet and explaining the difference between a public key and a private key (and why you must never share the second one).</div>
+              <div class="crypto-cta"><button class="crypto-btn" onclick="showEmail(1);">CONTINUE TO LESSON 2 →</button></div>
+            </div>
+            <div class="crypto-footer">ChainClass Academy · Unsubscribe · View in browser<br>You're receiving this because you enrolled in the Fundamentals Track.</div>
+          </div>
+        </div>
+
+        <div class="email-view" id="crypto-1">
+          <div class="email-meta-bar">
+            <span class="meta-label">From</span><span class="meta-val">ChainClass Academy &lt;learn@chainclass.io&gt;</span>
+            <span class="meta-label">Subject</span><span class="subject-val">Lesson 2: Your keys, your crypto. Lose the keys, lose everything.</span>
+          </div>
+          <div class="crypto-email">
+            <div class="crypto-header"><span class="crypto-logo">CHAINCLASS</span><span class="crypto-badge">ACADEMY</span></div>
+            <div class="crypto-content">
+              <div class="crypto-lesson-num">LESSON 02 / 03 &nbsp;·&nbsp; FUNDAMENTALS TRACK</div>
+              <div class="crypto-h1">Your keys, your crypto.<br>Lose the keys, lose everything.</div>
+              <div class="crypto-body">Last lesson, you learned what a blockchain is — a distributed ledger no single party controls. Today's lesson is the most important thing we'll teach you this entire course. We're serious.</div>
+              <div class="crypto-callout"><strong>The rule:</strong> "Not your keys, not your coins." In crypto, whoever holds the private key controls the funds. There is no "forgot my password" button. No customer support line. No bank to call.</div>
+              <div class="crypto-body">Here's how the system works: every crypto wallet generates two keys — a <span style="color:#5ef4be;">public key</span> and a <span style="color:#5ef4be;">private key</span>. Think of your public key like your email address — you share it freely so people can send you funds. Your private key is the password that proves ownership and authorizes transactions.</div>
+              <div class="crypto-body">But here's the twist: your private key isn't stored on the blockchain. It never leaves your device (or your head, if you memorize your seed phrase). That's what self-custody means — you are the bank.</div>
+              <div class="crypto-concepts">
+                <div class="crypto-concept"><div class="crypto-concept-title">PUBLIC KEY</div><div class="crypto-concept-body">Your wallet address. Share it freely. Used to receive funds.</div></div>
+                <div class="crypto-concept"><div class="crypto-concept-title">PRIVATE KEY</div><div class="crypto-concept-body">Your proof of ownership. Never share it. Controls your funds.</div></div>
+                <div class="crypto-concept"><div class="crypto-concept-title">SEED PHRASE</div><div class="crypto-concept-body">12–24 words that back up your private key. Store offline, physically.</div></div>
+                <div class="crypto-concept"><div class="crypto-concept-title">HOT vs COLD</div><div class="crypto-concept-body">Hot wallets are internet-connected. Cold wallets are offline. Cold = safer for large amounts.</div></div>
+              </div>
+              <div class="crypto-body">The most common beginner mistake? Keeping funds on an exchange long-term. Exchanges hold your keys on your behalf — meaning they technically hold your crypto. Not you. Move meaningful amounts to a self-custodied wallet once you're comfortable.</div>
+              <div class="crypto-body">In our final lesson, we're stepping into DeFi — decentralized finance. You'll see exactly why blockchains and wallets make entirely new financial instruments possible.</div>
+              <div class="crypto-cta"><button class="crypto-btn" onclick="showEmail(2);">CONTINUE TO LESSON 3 →</button></div>
+            </div>
+            <div class="crypto-footer">ChainClass Academy · Unsubscribe · View in browser</div>
+          </div>
+        </div>
+
+        <div class="email-view" id="crypto-2">
+          <div class="email-meta-bar">
+            <span class="meta-label">From</span><span class="meta-val">ChainClass Academy &lt;learn@chainclass.io&gt;</span>
+            <span class="meta-label">Subject</span><span class="subject-val">Lesson 3: DeFi — banking, rebuilt from scratch.</span>
+          </div>
+          <div class="crypto-email">
+            <div class="crypto-header"><span class="crypto-logo">CHAINCLASS</span><span class="crypto-badge">ACADEMY</span></div>
+            <div class="crypto-content">
+              <div class="crypto-lesson-num">LESSON 03 / 03 &nbsp;·&nbsp; FUNDAMENTALS TRACK</div>
+              <div class="crypto-h1">DeFi: banking, rebuilt from scratch.</div>
+              <div class="crypto-body">You've made it to the final lesson. You understand the ledger. You control your keys. Now let's see what's actually possible when you combine those two things.</div>
+              <div class="crypto-callout"><strong>DeFi in one line:</strong> Decentralized Finance = financial services (lending, trading, earning interest) that run on smart contracts instead of banks and brokers.</div>
+              <div class="crypto-body">A smart contract is just code that lives on a blockchain and executes automatically when certain conditions are met. No middleman. No office hours. No loan officers deciding your credit score. If the condition is true, the contract runs.</div>
+              <div class="crypto-body">In practice, DeFi protocols let you lend your crypto to borrowers and earn interest automatically; trade tokens peer-to-peer without a centralized exchange; or provide liquidity to pools and collect a share of trading fees — all 24/7, globally, from your wallet.</div>
+              <div class="crypto-concepts">
+                <div class="crypto-concept"><div class="crypto-concept-title">SMART CONTRACT</div><div class="crypto-concept-body">Self-executing code on a blockchain. Runs automatically when conditions are met.</div></div>
+                <div class="crypto-concept"><div class="crypto-concept-title">DEX</div><div class="crypto-concept-body">Decentralized Exchange. Trade tokens directly from your wallet, no sign-up needed.</div></div>
+                <div class="crypto-concept"><div class="crypto-concept-title">LIQUIDITY POOL</div><div class="crypto-concept-body">A shared pool of funds that powers trading. Providers earn a cut of transaction fees.</div></div>
+                <div class="crypto-concept"><div class="crypto-concept-title">YIELD</div><div class="crypto-concept-body">Returns earned by supplying assets to DeFi protocols. Rates fluctuate with demand.</div></div>
+              </div>
+              <div class="crypto-body">DeFi is powerful — and risky. Smart contracts can have bugs. Protocols can be exploited. Always research before connecting your wallet to any protocol. Start small. Understand what you're doing before you do it.</div>
+              <div class="crypto-body">That's the Fundamentals Track complete. You now understand more about how crypto actually works than 90% of people who own it. The next step is the Intermediate Track — we go protocol-deep on Ethereum, Solana, and Layer 2s.</div>
+              <div class="crypto-cta"><button class="crypto-btn">ENROLL IN INTERMEDIATE TRACK →</button></div>
+            </div>
+            <div class="crypto-footer">ChainClass Academy · Unsubscribe · View in browser<br>This was your final Fundamentals lesson.</div>
+          </div>
+        </div>
+
+      </div><!-- /emails-crypto -->
+
+      <!-- FASHION EMAILS -->
+      <div id="emails-fashion" style="display:none;">
+
+        <div class="email-view visible" id="fashion-0">
+          <div class="email-meta-bar">
+            <span class="meta-label">From</span><span class="meta-val">Maison Velours &lt;hello@maisonvelours.com&gt;</span>
+            <span class="meta-label">Subject</span><span class="subject-val">Welcome. This is a world built slowly.</span>
+          </div>
+          <div class="fashion-email">
+            <div class="fashion-top">
+              <div class="fashion-logo">Maison Velours</div>
+              <div class="fashion-tagline">Dressed for the life you actually live</div>
+              <div class="fashion-rule"></div>
+            </div>
+            <div class="fashion-hero-text">
+              <div class="fashion-eyebrow">You're in. Welcome.</div>
+              <div class="fashion-h1">We make clothes for women<br>who don't need to shout.</div>
+              <p class="fashion-body">Maison Velours began with a simple frustration: fashion had become either aggressively loud or aggressively minimal — and neither felt like a real wardrobe. We wanted clothes with depth. With texture. With the kind of quiet confidence that comes from wearing something that was made with genuine care.</p>
+              <p class="fashion-body">Everything we make starts with fabric. We work directly with mills in Lyon, Porto, and Kyoto — sourcing materials that look better the longer you wear them. Our design process is unhurried by intention. A piece takes as long as it takes.</p>
+            </div>
+            <div class="fashion-pullquote">"Elegance is refusal."<br><span style="font-size:13px;letter-spacing:.1em;">— Coco Chanel, and also our entire design brief.</span></div>
+            <div class="fashion-thirds">
+              <div class="fashion-third"><div class="fashion-third-num">12</div><div class="fashion-third-label">collections per year. We release slowly.</div></div>
+              <div class="fashion-third"><div class="fashion-third-num">6</div><div class="fashion-third-label">mills we work with. All direct. All named.</div></div>
+              <div class="fashion-third"><div class="fashion-third-num">∞</div><div class="fashion-third-label">wear cycles per piece. That's the whole point.</div></div>
+            </div>
+            <div class="fashion-cta">
+              <button class="fashion-btn">EXPLORE THE CURRENT COLLECTION</button>
+              <button class="fashion-secondary">Read our making-of journal →</button>
+            </div>
+            <div class="fashion-footer">Maison Velours · 14 Rue du Faubourg · Paris · Unsubscribe · Manage preferences<br>You subscribed because you have taste. We won't abuse the privilege.</div>
+          </div>
+        </div>
+
+        <div class="email-view" id="fashion-1">
+          <div class="email-meta-bar">
+            <span class="meta-label">From</span><span class="meta-val">Maison Velours &lt;hello@maisonvelours.com&gt;</span>
+            <span class="meta-label">Subject</span><span class="subject-val">The reason we started (and why it still matters).</span>
+          </div>
+          <div class="fashion-email">
+            <div class="fashion-top">
+              <div class="fashion-logo">Maison Velours</div>
+              <div class="fashion-tagline">Dressed for the life you actually live</div>
+              <div class="fashion-rule"></div>
+            </div>
+            <div class="fashion-hero-text">
+              <div class="fashion-eyebrow">A note from our founder</div>
+              <div class="fashion-h1">I burned out of fashion.<br>Then I made it again.</div>
+              <p class="fashion-body">I spent ten years as a buyer for a major European retailer. I flew to eight cities a season. I told factories to move faster. I approved fabrics I knew wouldn't last. And then one day I was sitting in a sampling room in Guangzhou, holding a blouse that would retail for €280 and cost €7 to produce, and I thought: this isn't fashion. This is just product.</p>
+              <p class="fashion-body">I left. I spent two years doing nothing but visiting mills and learning to understand cloth — really understand it. How it drapes when it breathes. How it moves differently after the third wash. I was looking for fabrics that earn the right to be worn.</p>
+              <p class="fashion-body">Maison Velours launched with nine pieces. We sold out in six weeks with zero advertising — just women who found something that felt, for once, like it was made for them. We've grown slowly since. That's intentional.</p>
+              <p class="fashion-body">The name comes from the French word for velvet — not the fabric necessarily, but the quality. Something that resists, slightly, and rewards the touch.</p>
+            </div>
+            <div class="fashion-pullquote">"I wanted clothes you could live in.<br>Not just photograph in."</div>
+            <div class="fashion-cta">
+              <button class="fashion-btn">SHOP THE COLLECTION</button>
+              <button class="fashion-secondary">Visit our atelier →</button>
+            </div>
+            <div class="fashion-footer">Maison Velours · 14 Rue du Faubourg · Paris · Unsubscribe · Manage preferences</div>
+          </div>
+        </div>
+
+        <div class="email-view" id="fashion-2">
+          <div class="email-meta-bar">
+            <span class="meta-label">From</span><span class="meta-val">Maison Velours &lt;hello@maisonvelours.com&gt;</span>
+            <span class="meta-label">Subject</span><span class="subject-val">A curated starting point. (We picked three pieces for you.)</span>
+          </div>
+          <div class="fashion-email">
+            <div class="fashion-top">
+              <div class="fashion-logo">Maison Velours</div>
+              <div class="fashion-tagline">Dressed for the life you actually live</div>
+              <div class="fashion-rule"></div>
+            </div>
+            <div class="fashion-hero-text">
+              <div class="fashion-eyebrow">Starting is the hardest part.</div>
+              <div class="fashion-h1">We made the choice easier.</div>
+              <p class="fashion-body">New subscribers often tell us the same thing: they love the collection but aren't sure where to begin. So we thought about it on your behalf. These are the three pieces we'd start with — pieces that work immediately, and work together.</p>
+            </div>
+            <div class="fashion-product-list">
+              <div class="fashion-product">
+                <div class="fashion-product-label">The Foundation</div>
+                <div class="fashion-product-name">The Brume Linen Trouser</div>
+                <p class="fashion-product-desc">Belgian linen, pre-washed three times before it reaches you. Relaxed through the hip, tapered at the ankle. The piece women ask about most. Comes in oat, slate, and tobacco.</p>
+                <div class="fashion-product-price">€ 245 · 4 sizes · Ships in 3 days</div>
+              </div>
+              <div class="fashion-product">
+                <div class="fashion-product-label">The Layer</div>
+                <div class="fashion-product-name">The Sable Silk Camisole</div>
+                <p class="fashion-product-desc">Washed silk from our Kyoto mill. Designed to be worn in, worn under, or worn alone. The weight of it is the point — it moves without fuss and drapes without theatrics.</p>
+                <div class="fashion-product-price">€ 185 · 4 sizes · Low stock in ivory</div>
+              </div>
+              <div class="fashion-product">
+                <div class="fashion-product-label">The Statement (Quiet)</div>
+                <div class="fashion-product-name">The Duvet Coat</div>
+                <p class="fashion-product-desc">Our most-returned-to piece. Portuguese boiled wool, structured but weightless, with a single concealed button. It finishes every outfit. Every. Single. Time.</p>
+                <div class="fashion-product-price">€ 490 · Free returns · 2-year guarantee</div>
+              </div>
+            </div>
+            <div class="fashion-cta">
+              <button class="fashion-btn">SHOP THE EDIT</button>
+              <div style="margin-top:14px;font-family:'Lato',sans-serif;font-size:12px;color:#8a7d6b;">New subscribers receive complimentary standard shipping on their first order.<br>No code needed. Applied automatically at checkout.</div>
+            </div>
+            <div class="fashion-footer">Maison Velours · 14 Rue du Faubourg · Paris · Unsubscribe · Manage preferences<br>This offer applies to your first order only. No expiry — we don't do artificial urgency.</div>
+          </div>
+        </div>
+
+      </div><!-- /emails-fashion -->
+
+      <!-- CAKE EMAILS -->
+      <div id="emails-cake" style="display:none;">
+
+        <div class="email-view visible" id="cake-0">
+          <div class="email-meta-bar">
+            <span class="meta-label">From</span><span class="meta-val">Petit Four Bakehouse &lt;hello@petitfourbakehouse.com&gt;</span>
+            <span class="meta-label">Subject</span><span class="subject-val">It started with one very good croissant.</span>
+          </div>
+          <div class="cake-email">
+            <div class="cake-header"><div class="cake-logo">Petit <span>Four</span> Bakehouse</div><div class="cake-header-tag">EST. 2017 · LAGOS</div></div>
+            <div class="cake-hero">
+              <div class="cake-hero-eyebrow">Welcome to the family</div>
+              <div class="cake-h1">We bake like someone's<br><em>grandmother is watching.</em></div>
+              <div class="cake-hero-sub">Because she is. (Hi, Mama Ade. We know you're reading this.)</div>
+            </div>
+            <div class="cake-content">
+              <p class="cake-body">Here's the honest story: Petit Four Bakehouse started in a home kitchen in Lekki, with a single recipe for a croissant that our founder, Adaeze, had spent three years trying to perfect.</p>
+              <p class="cake-body">Not because she went to culinary school. Not because she had a business plan. Because she had eaten one extraordinary croissant in Lyon in 2014 — buttery, audibly crispy on the outside, almost custardy in the middle — and had never found it again. So she made it herself. Again and again and again.</p>
+              <div class="cake-highlight-box">
+                <div class="cake-highlight-title">The croissant that started everything</div>
+                <p class="cake-highlight-body">Laminated dough. 81 layers of butter. 72 hours of cold proofing. Three folds over two days. Baked to order in small batches of twelve. The recipe has never changed. The process has never been rushed. To this day, it's the most ordered item on our menu.</p>
+              </div>
+              <p class="cake-body">Word spread the way word still spreads in Lagos: someone tasted it, texted a friend, and suddenly Adaeze was baking 200 croissants a week out of her apartment. In 2017, we opened the Bakehouse.</p>
+              <p class="cake-body">We now ship nationwide. But every single pastry is still made the slow way, by the same small team, using the same obsessive standards. Because we believe the way food is made is part of how it tastes.</p>
+              <div class="cake-divider">✦</div>
+              <p class="cake-body" style="font-style:italic;color:#6b4a28;font-size:15px;text-align:center;">"Good baking isn't a skill. It's a practice of care."<br><span style="font-size:13px;font-style:normal;">— Adaeze Okafor, Founder</span></p>
+            </div>
+            <div class="cake-footer">Petit Four Bakehouse · Lagos · Abuja · Port Harcourt (delivery) · Unsubscribe<br>You signed up because you know what's good. We promise to earn it.</div>
+          </div>
+        </div>
+
+        <div class="email-view" id="cake-1">
+          <div class="email-meta-bar">
+            <span class="meta-label">From</span><span class="meta-val">Petit Four Bakehouse &lt;hello@petitfourbakehouse.com&gt;</span>
+            <span class="meta-label">Subject</span><span class="subject-val">We make six things. We make them absurdly well.</span>
+          </div>
+          <div class="cake-email">
+            <div class="cake-header"><div class="cake-logo">Petit <span>Four</span> Bakehouse</div><div class="cake-header-tag">EST. 2017 · LAGOS</div></div>
+            <div class="cake-hero">
+              <div class="cake-hero-eyebrow">Our signature bakes</div>
+              <div class="cake-h1">Six things on the menu.<br><em>All of them worth it.</em></div>
+              <div class="cake-hero-sub">We don't diversify. We deepen.</div>
+            </div>
+            <div class="cake-content">
+              <p class="cake-body">Most bakeries have a menu of sixty. We have six. It's a deliberate choice. Every item on our menu represents hundreds of test batches, dozens of rejected recipes, and years of sourcing the exact right ingredients.</p>
+              <div class="cake-divider">✦</div>
+              <div class="cake-product"><div class="cake-product-name">The Classic Croissant</div><p class="cake-product-desc">81-layer laminated dough. French AOP butter. Cold-proofed for 72 hours. Baked to order in batches of twelve. The one that started everything. The one people fly in for.</p></div>
+              <div class="cake-product"><div class="cake-product-name">The Nigerian Honey Cake</div><p class="cake-product-desc">Raw wildflower honey from Plateau State, woven into a fine crumb sponge with a buttercream that tastes lightly of orange blossom. The one we get most emotional about.</p></div>
+              <div class="cake-product"><div class="cake-product-name">The Dark Chocolate Tart</div><p class="cake-product-desc">70% single-origin Ghanaian chocolate. Almond pâte sablée. The ganache is set just past liquid — it yields at the touch of a spoon. Not sweet. Deeply, darkly itself.</p></div>
+              <div class="cake-product"><div class="cake-product-name">The Twice-Baked Almond Croissant</div><p class="cake-product-desc">Day-old croissants, soaked in almond syrup, filled with frangipane, baked again until the outside shatters. The most comforting thing on the menu. Weekend sellout, every time.</p></div>
+              <div class="cake-highlight-box">
+                <div class="cake-highlight-title">How we source our ingredients</div>
+                <p class="cake-highlight-body">Our butter comes from a single co-operative in Normandy. Our chocolate is sourced directly from a cooperative in Kumasi. Our flour is stone-milled, unenriched, and ordered fresh each week. We don't do this to brag. We do it because you can taste the difference.</p>
+              </div>
+            </div>
+            <div class="cake-footer">Petit Four Bakehouse · Lagos · Abuja · Port Harcourt (delivery) · Unsubscribe<br>Next up: something for you. Stay with us.</div>
+          </div>
+        </div>
+
+        <div class="email-view" id="cake-2">
+          <div class="email-meta-bar">
+            <span class="meta-label">From</span><span class="meta-val">Petit Four Bakehouse &lt;hello@petitfourbakehouse.com&gt;</span>
+            <span class="meta-label">Subject</span><span class="subject-val">Your first order. We made it easy — and made it worth it. 🥐</span>
+          </div>
+          <div class="cake-email">
+            <div class="cake-header"><div class="cake-logo">Petit <span>Four</span> Bakehouse</div><div class="cake-header-tag">EST. 2017 · LAGOS</div></div>
+            <div class="cake-hero">
+              <div class="cake-hero-eyebrow">A gift for you</div>
+              <div class="cake-h1">You've heard the story.<br><em>Now taste it.</em></div>
+              <div class="cake-hero-sub">We saved something for first-timers. Here's your welcome offer.</div>
+            </div>
+            <div class="cake-content">
+              <p class="cake-body">You've been with us for a few days now. You know where we came from. You know what we make. You know the croissant has 81 layers (we don't let anyone forget).</p>
+              <p class="cake-body">Now we want to meet you in person — or as close as a delivery box gets. We've put together a starter box that covers all the essentials, and we're taking 15% off your first order, no minimum required.</p>
+              <div class="cake-offer-box">
+                <div class="cake-offer-title">Your first-order <em>gift</em></div>
+                <div class="cake-offer-code">FIRSTBITE</div>
+                <div class="cake-offer-sub">15% off your first order · No minimum · Free insulated packaging included</div>
+                <button class="cake-btn">ORDER NOW · USE FIRSTBITE</button>
+              </div>
+              <div class="cake-highlight-box">
+                <div class="cake-highlight-title">Our recommendation for first-timers</div>
+                <p class="cake-highlight-body">Start with The Classic Box — 4 croissants, 2 almond croissants, and 1 slice of whichever tart is freshest that week. It gives you the full picture. Most people reorder within 10 days. We say this not to pressure you, but because we've watched it happen 4,000 times and we're proud of it.</p>
+              </div>
+              <p class="cake-body">All orders are baked to schedule, shipped fresh on Tuesdays and Fridays. You'll receive a dispatch notification with your batch number and bake time — because we think you should know when your food was made.</p>
+              <p class="cake-body" style="font-size:13px;color:#8a7d6b;">The FIRSTBITE code is yours — no expiry, no fine print. Use it whenever you're ready. We'll be here, still laminating dough the slow way.</p>
+            </div>
+            <div class="cake-footer">Petit Four Bakehouse · 12 Bisola Durosinmi-Etti Drive, Lekki · Lagos<br>Nationwide delivery · Tuesdays & Fridays · hello@petitfourbakehouse.com · Unsubscribe</div>
+          </div>
+        </div>
+
+      </div><!-- /emails-cake -->
+
+    </div><!-- /email-shell -->
+  </div><!-- /viewer-inner -->
+</div><!-- /viewer-section -->
+
+<!-- ABOUT -->
+<hr class="section-rule">
+<section class="about-section">
+  <div class="about-left">
+    <h2>Copy that earns<br>the <em>open rate.</em></h2>
+    <p>I write email sequences for brands that want to build real relationships with their subscribers — not just fill inboxes. Every sequence I write starts with understanding your customer's mindset at each stage, then crafting a voice that feels native to your brand.</p>
+    <p>Whether that's technical and precise, editorially refined, or warm and story-driven — the goal is always the same: subscribers who look forward to your emails, and convert when the moment is right.</p>
+  </div>
+  <div class="about-right">
+    <div class="service-item">
+      <span class="service-label">Welcome</span>
+      <div><div class="service-name">Welcome & Onboarding Sequences</div><div class="service-desc">First impressions that set the tone, tell your story, and earn the trust that drives a first purchase.</div></div>
+    </div>
+    <div class="service-item">
+      <span class="service-label">Nurture</span>
+      <div><div class="service-name">Nurture & Educational Flows</div><div class="service-desc">Long-form sequences that build authority, reduce churn, and turn subscribers into brand advocates.</div></div>
+    </div>
+    <div class="service-item">
+      <span class="service-label">Launch</span>
+      <div><div class="service-name">Product Launch Campaigns</div><div class="service-desc">Anticipation-building sequences that drive urgency, social proof, and conversion on launch day.</div></div>
+    </div>
+    <div class="service-item">
+      <span class="service-label">Re-engage</span>
+      <div><div class="service-name">Win-back & Re-engagement</div><div class="service-desc">Sequences that bring dormant subscribers back — with honesty, not desperation.</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<div class="cta-strip">
+  <h2>Ready to work<br><em>together?</em></h2>
+  <p>Let's talk about your next campaign. I'll bring the words.</p>
+  <button class="cta-btn">Send me a brief</button>
+  <button class="cta-btn-outline">View full portfolio</button>
+</div>
+
+<!-- FOOTER -->
+<footer>
+  <div class="f-logo">Email Portfolio</div>
+  <div class="f-copy">© 2026 · Built to share, not to hoard.</div>
+</footer>
+
+<script>
+  const campaigns = {
+    crypto: {
+      title: 'ChainClass Academy — Tutorial Series',
+      tabs: ['Lesson 1 — Blockchain', 'Lesson 2 — Wallets & Keys', 'Lesson 3 — DeFi']
+    },
+    fashion: {
+      title: 'Maison Velours — Welcome Sequence',
+      tabs: ['Email 1 — Welcome', 'Email 2 — Our Story', 'Email 3 — First Purchase']
+    },
+    cake: {
+      title: 'Petit Four Bakehouse — Nurture Sequence',
+      tabs: ['Email 1 — Our Story', 'Email 2 — The Craft', 'Email 3 — Your First Order']
+    }
+  };
+
+  let currentCampaign = 'crypto';
+  let currentEmail = 0;
+
+  function selectCampaign(id, cardEl) {
+    currentCampaign = id;
+    currentEmail = 0;
+
+    document.querySelectorAll('.campaign-card').forEach(c => c.classList.remove('active'));
+    cardEl.classList.add('active');
+
+    document.getElementById('viewer-title').textContent = campaigns[id].title;
+
+    const tabsEl = document.getElementById('email-tabs');
+    tabsEl.innerHTML = campaigns[id].tabs.map((label, i) =>
+      `<button class="email-tab ${i === 0 ? 'active' : ''}" onclick="showEmail(${i})">${label}</button>`
+    ).join('');
+
+    ['crypto','fashion','cake'].forEach(c => {
+      document.getElementById('emails-' + c).style.display = c === id ? 'block' : 'none';
+    });
+
+    showEmail(0);
+
+    document.querySelector('.viewer-section').scrollIntoView({ behavior: 'smooth', block: 'start' });
+  }
+
+  function showEmail(idx) {
+    currentEmail = idx;
+
+    document.querySelectorAll('#email-tabs .email-tab').forEach((t, i) => {
+      t.classList.toggle('active', i === idx);
+    });
+
+    const container = document.getElementById('emails-' + currentCampaign);
+    container.querySelectorAll('.email-view').forEach((v, i) => {
+      v.classList.toggle('visible', i === idx);
+    });
+  }
+</script>
+
+</body>
+</html>
